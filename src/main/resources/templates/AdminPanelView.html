@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans&display=swap"
+          rel="stylesheet">
+
+    <link href="../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+    <link href="../static/css/bootstrap-icons.css" th:href="@{/css/bootstrap-icons.css}" rel="stylesheet">
+
+    <link href="../static/css/templatemo-topic-listing.css" th:href="@{/css/templatemo-topic-listing.css}"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <div th:replace="~{fragments/ForumSystemForm :: navbar}"></div>
+    <title>Admin Panel</title>
+</head>
+<body>
+
+<h2 style="text-align: center; color: #13547a" >Welcome to AdminPanel</h2>
+
+<div class="col-12 text-center" >
+    <h2 class="mb-4" th:if="${isAuthenticated}" th:text="${session.currentUser}" style="color: #13547a"></h2>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+
+        <div class="col-12">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="design-tab-pane" role="tabpanel"
+                     aria-labelledby="design-tab" tabindex="0">
+                    <div class="row justify-content-center" >
+                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
+                            <div class="custom-block bg-white shadow-lg">
+                                <a href="#" th:href="@{/admin/users}">
+                                    <div class="d-flex">
+                                        <div>
+                                            <h5 class="mb-2" style="color: #13547a">Manage All Users</h5>
+
+                                            <p class="mb-0">Search users by their username, email, first name.</p>
+                                            <p class="mb-0">Edit, Block, Unblock, Promote, Delete users</p>
+                                        </div>
+
+                                    </div>
+
+                                    <img src="../images/manage_users.jpg"
+                                         class="custom-block-image img-fluid" alt=""
+                                         style="object-fit: contain; width: 100%; height: 100%;">
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
+                            <div class="custom-block bg-white shadow-lg">
+                                <a href="#" th:href="@{/admin/posts}">
+                                    <div class="d-flex">
+                                        <div>
+                                            <h5 class="mb-2" style="color: #13547a">Manage All Posts</h5>
+
+                                            <p class="mb-0">Search, filter or sort posts</p>
+                                            <p class="mb-0">View and delete posts</p>
+                                        </div>
+
+                                    </div>
+
+                                    <img src="../images/post_manage.jpg"
+                                         class="custom-block-image" alt=""
+                                         style="object-fit: contain; width: 100%; height: 100%;">
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br/><br/>
+<br/><br/>
+<div th:replace="~{fragments/ForumSystemForm :: footer}"></div>
+</body>
+</html>

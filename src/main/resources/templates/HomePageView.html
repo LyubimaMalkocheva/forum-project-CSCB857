@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Home Page</title>
+
+    <div th:replace="~{fragments/ForumSystemForm :: links}"></div>
+    <div th:replace="~{fragments/ForumSystemForm :: navbar}"></div>
+</head>
+
+<body id="top">
+<main>
+
+    <section class="hero-section d-flex justify-content-center align-items-center" id="section_1">
+        <div class="container">
+            <div class="row">
+
+                <!--                Total post and total users-->
+                <div class="count-info">
+                    <div class="row">
+                        <div class="users">
+                            <h4><span>Users: </span><span th:text="${userCount}">150,865</span></h4>
+                        </div>
+                        <div class="posts">
+                            <h4><span>Posts: </span><span th:text="${postCount}">275,403</span> <em></em></h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-8 col-12 mx-auto">
+                    <h1 class="text-white text-center">Live. Relax. Travel.</h1>
+
+                    <h6 class="text-center">platform for travel enthusiasts</h6>
+                    <br>
+                    <br>
+
+                </div>
+
+                <div class="container">
+                    <h2 class="grid-title">Newest Posts</h2>
+                    <div class="newest-posts-grid">
+                        <!-- Large post -->
+                        <div th:if="${tenNewestPosts.size()} > 0" class="post large">
+                            <a th:href="${isAuthenticated} ? @{/posts/{id}(id=${tenNewestPosts.get(0).getPostId()})} : @{/auth/login}">
+                                <h5 th:text="${tenNewestPosts.get(0).title}"></h5>
+                                <p th:text="${tenNewestPosts.get(0).content}"></p>
+                            </a>
+                        </div>
+
+                        <!-- Remaining posts -->
+                        <div th:each="post : ${tenNewestPosts.subList(1, tenNewestPosts.size())}" class="post">
+                            <a th:href="${isAuthenticated} ? @{/posts/{id}(id=${post.getPostId()})} : @{/auth/login}">
+                                <h5 th:text="${post.title}"></h5>
+                                <p th:text="${post.content}"></p>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <br>
+            <br>
+            <br>
+
+            <div class="container">
+                <h2 class="grid-title">Most Commented Posts</h2>
+                <div class="newest-posts-grid">
+                    <!-- Large post -->
+                    <div th:if="${postCommentList.size()} > 0" class="post large">
+                        <a th:href="${isAuthenticated} ? @{/posts/{id}(id=${postCommentList.get(0).getPostId()})} : @{/auth/login}">
+                            <h5 th:text="${postCommentList.get(0).title}"></h5>
+                            <p th:text="${postCommentList.get(0).content}"></p>
+                        </a>
+                    </div>
+                    <!-- Remaining posts -->
+                    <div th:each="post : ${postCommentList.subList(1, postCommentList.size())}" class="post">
+                        <a th:href="${isAuthenticated} ? @{/posts/{id}(id=${post.getPostId()})} : @{/auth/login}">
+                            <h5 th:text="${post.title}"></h5>
+                            <p th:text="${post.content}"></p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</main>
+
+
+<div th:replace="~{fragments/ForumSystemForm :: footer}"></div>
+
+
+<!-- JAVASCRIPT FILES -->
+<script src="../static/js/jquery.min.js" th:src="@{/js/jquery.min.js}"></script>
+<script src="../static/js/bootstrap.bundle.min.js" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+<script src="../static/js/jquery.sticky.js" th:src="@{/js/jquery.sticky.js}"></script>
+<script src="../static/js/click-scroll.js" th:src="@{/js/click-scroll.js}"></script>
+<script src="../static/js/custom.js" th:src="@{/js/custom.js}"></script>
+
+</body>
+</html>

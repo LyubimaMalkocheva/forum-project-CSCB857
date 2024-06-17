@@ -1,0 +1,23 @@
+.admin-users-table {
+    border-collapse: separate;
+    border-spacing: 0 8px;
+}
+
+.admin-users-table th,
+.admin-users-table td {
+
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.admin-users-table th:first-child,
+.admin-users-table td:first-child {
+    padding-left: 20px;
+}
+
+.admin-users-table th:last-child,
+.admin-users-table td:last-child {
+    padding-right: 20px;
+}

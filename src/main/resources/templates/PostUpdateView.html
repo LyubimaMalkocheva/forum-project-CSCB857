@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create New Post</title>
+    <div th:replace="~{fragments/ForumSystemForm :: links}"></div>
+    <div th:replace="~{fragments/ForumSystemForm :: navbar}"></div>
+</head>
+<body>
+
+<div class="container">
+    <br>
+    <br>
+    <h3 class="create-post-title">Create New Post</h3>
+    <br>
+    <br>
+    <form action="#" th:action="@{/posts/{postId}/update(postId=${postId})}" th:object="${postMvc}" method="post">
+        <div class="form-group">
+            <div> <label for="title">Title</label>
+                <input type="text" name="title" class="form-control" id="title" th:field="*{title}" placeholder="Enter title">
+            </div><label class="error" th:errors="*{title}">Title error placeholder</label>
+            <br>
+            <br>
+        </div>
+        <div class="form-group">
+            <label for="content">Content</label>
+            <textarea class="form-control" id="content" th:field="*{content}" rows="10" placeholder="Write your content here"></textarea>
+            <label class="error" th:errors="*{content}">Content error placeholder</label>
+        </div>
+        <br>
+        <br>
+
+        <div class="form-group">
+            <label for="tags">Tags</label>
+            <input type="text" name="tags" class="form-control" id="tags" placeholder="Enter tags separated by spaces (e.g. tag1 tag2 tag3)"
+            th:field="*{tags}">
+                <label class="error" th:errors="*{tags}">Tags error placeholder</label>
+        </div>
+
+        <button type="submit" class="btn custom-btn mt-3 mt-lg-4">Edit Post</button>
+
+        <br>
+        <br>
+    </form>
+</div>
+
+<div th:replace="~{fragments/ForumSystemForm :: footer}"></div>
+
+</body>
+</html>

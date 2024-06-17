@@ -1,0 +1,24 @@
+.post-filter {
+    max-width: 100%;
+    margin: auto;
+    padding: 20px;
+}
+
+.form-label {
+    margin-right: 10px;
+}
+
+.d-flex > * {
+    margin: 0 5px;
+}
+
+.input-group-text {
+    background-color: #e9ecef;
+}
+.form-control, .form-select {
+    max-width: 160px;
+}
+
+.search:hover{
+    background-color: #57c1b7;
+}
